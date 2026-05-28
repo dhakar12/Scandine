@@ -1,0 +1,138 @@
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import axios from "axios";
+import api from "@/lib/api";
+import { Button } from "@/components/ui/button";
+
+export default function VerifyOtp() {
+  const [otp, setOtp] = useState(Array(6).fill("")); // 6 boxes
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const inputRefs = useRef<HTMLInputElement[]>([]);
+  const navigate = useNavigate();
+
+  const handleChange = (value: string, index: number) => {
+    if (/^[0-9]?$/.test(value)) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+
+      if (value && index < 5) {
+        inputRefs.current[index + 1]?.focus();
+      }
+    }
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement>,
+    index: number,
+  ) => {
+    if (e.key === "Backspace" && !otp[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  const handleVerify = async () => {
+    const userId = localStorage.getItem("otpUserId");
+    if (!userId) {
+      toast.error("No user ID found");
+      return;
+    }
+
+    const enteredOtp = otp.join("");
+    if (enteredOtp.length < 6) {
+      toast.error("Please enter full OTP");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await api.post("/users/verify-otp", { userId, otp: enteredOtp });
+      toast.success(res.data.message);
+      localStorage.removeItem("otpUserId");
+      setStatus("success");
+      setTimeout(() => navigate("/signin"), 1500);
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "OTP verification failed");
+      setStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleResend = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const userId = localStorage.getItem("otpUserId");
+    if (!userId) {
+      toast.error("No user ID found. Please register again.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await api.post("/users/resend-otp", { userId });
+      toast.success(res.data.message || "OTP resent successfully. Please check your email.");
+      setStatus("idle");
+      setOtp(Array(6).fill("")); // Reset otp input boxes
+    } catch (err: any) {
+      toast.error(err.response?.data?.message || "Failed to resend OTP");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background text-foreground">
+      <div className="w-full max-w-md bg-card p-6 rounded-2xl shadow-lg">
+        <h2 className="text-xl font-bold mb-2">Verify Your Email</h2>
+        <p className="mb-6 text-muted-foreground">
+          Enter the 6-digit OTP sent to your email.
+        </p>
+
+        {/* OTP boxes */}
+        <div className="flex justify-between mb-6">
+          {otp.map((digit, i) => (
+            <input
+              key={i}
+              ref={(el) => (inputRefs.current[i] = el!)}
+              type="text"
+              inputMode="numeric"
+              maxLength={1}
+              value={digit}
+              onChange={(e) => handleChange(e.target.value, i)}
+              onKeyDown={(e) => handleKeyDown(e, i)}
+              className={`w-12 h-12 text-center text-lg font-semibold rounded-lg border 
+                bg-background text-foreground outline-none transition
+                focus:ring-2 
+                ${
+                  status === "success"
+                    ? "border-green-500 focus:ring-green-400"
+                    : status === "error"
+                      ? "border-red-500 focus:ring-red-400"
+                      : "border-muted focus:ring-primary"
+                }`}
+            />
+          ))}
+        </div>
+
+        {/* Buttons */}
+        <Button
+          onClick={handleVerify}
+          disabled={isSubmitting}
+          className="w-full mb-3"
+        >
+          {isSubmitting ? "Verifying..." : "Verify OTP"}
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={handleResend}
+          disabled={isSubmitting}
+          className="w-full"
+        >
+          Resend OTP
+        </Button>
+      </div>
+    </div>
+  );
+}
