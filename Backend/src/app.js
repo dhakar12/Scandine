@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(helmet({ crossOriginResourcePolicy: false }));
 
-const allowedOrigins = ['http://localhost:8080', 'https://scan-dine.vercel.app'];
+const allowedOrigins = ['http://localhost:8080', 'https://scandine-nu.vercel.app'];
 app.use(
   cors({
     origin: (origin, callback) => {
