@@ -11,7 +11,6 @@ import {
   ArrowLeft,
   Linkedin,
   Github,
-  ExternalLink,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -62,57 +61,57 @@ export default function About() {
       <section className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
-            About Us
+            About ScanDine
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-8">
             Turning Local Cafés Digital—One QR at a Time.
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            We're a team of passionate developers on a mission to help small
-            restaurants and cafés go digital without the headache. Our platform
-            makes it super simple to upload, update, and share your menu through
-            a single QR code—no more reprinting or confusion.
+            I'm a passionate developer on a mission to help small restaurants
+            and cafés go digital without the headache. ScanDine makes it super
+            simple to upload, update, and share your menu through a single QR
+            code—no more reprinting or confusion.
           </p>
         </div>
       </section>
 
-      {/* Founders Section */}
+      {/* Developer Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Meet the Founders
+            Meet the Developer
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Two passionate developers bringing their vision to life with
-            cutting-edge technology
+            Designed, developed & deployed — a solo full-stack effort
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Arif Mansoori Card */}
-          <Card className="group border-none shadow-lg bg-card/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:scale-105 rounded-xl overflow-hidden animate-fade-in">
-            <CardHeader className="text-center pb-8 pt-8">
-              <div className="w-36 h-36 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110">
+        <div className="flex justify-center max-w-xl mx-auto">
+          {/* Uday Dhakar Card */}
+          <Card className="group w-full border-none shadow-lg bg-card/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:scale-105 rounded-xl overflow-hidden animate-fade-in">
+            <CardHeader className="text-center pb-8 pt-10">
+              <div className="w-40 h-40 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110 ring-4 ring-indigo-200/40">
                 <span className="text-5xl font-bold text-white tracking-wide">
-                  AM
+                  UD
                 </span>
               </div>
               <CardTitle className="text-3xl font-bold text-foreground mb-2">
-                Arif Mansoori
+                Uday Dhakar
               </CardTitle>
-              <CardDescription className="text-lg font-semibold text-orange-600 mb-3">
-                Frontend Developer & UI/UX Designer
+              <CardDescription className="text-lg font-semibold text-indigo-600 mb-3">
+                Full Stack Developer
               </CardDescription>
               <div className="space-y-2">
                 <p className="font-semibold text-muted-foreground text-base">
-                  B.Tech CSE | TIT Bhopal
+                  IIIT Surat
                 </p>
                 <p className="text-muted-foreground leading-relaxed text-base px-4">
-                  Loves clean UI and building useful tech for real people.
+                  Building useful tech for real people — from pixel-perfect UIs
+                  to robust backend systems.
                 </p>
               </div>
             </CardHeader>
-            <CardContent className="text-center pb-8">
+            <CardContent className="text-center pb-10">
               <div className="flex justify-center gap-4 pt-6">
                 <Button
                   asChild
@@ -121,7 +120,7 @@ export default function About() {
                   className="flex items-center gap-3 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-all duration-300 hover:scale-105 px-6 py-3 rounded-xl shadow-md hover:shadow-lg"
                 >
                   <a
-                    href="https://www.linkedin.com/in/mohammad-arif-mansoori"
+                    href="https://www.linkedin.com/in/uday-dhakar-853501281/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -136,66 +135,7 @@ export default function About() {
                   className="flex items-center gap-3 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-700 transition-all duration-300 hover:scale-105 px-6 py-3 rounded-xl shadow-md hover:shadow-lg"
                 >
                   <a
-                    href="https://github.com/epex786"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="w-5 h-5" />
-                    GitHub
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Naman Shrivastava Card */}
-          <Card className="group border-none shadow-lg bg-card/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:scale-105 rounded-xl overflow-hidden animate-fade-in-delayed">
-            <CardHeader className="text-center pb-8 pt-8">
-              <div className="w-36 h-36 bg-gradient-to-br from-green-500 to-green-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:shadow-2xl transition-all duration-500 group-hover:scale-110">
-                <span className="text-5xl font-bold text-white tracking-wide">
-                  NS
-                </span>
-              </div>
-              <CardTitle className="text-3xl font-bold text-foreground mb-2">
-                Naman Shrivastava
-              </CardTitle>
-              <CardDescription className="text-lg font-semibold text-green-600 mb-3">
-                Backend Developer & System Architect
-              </CardDescription>
-              <div className="space-y-2">
-                <p className="font-semibold text-muted-foreground text-base">
-                  B.Tech CSE | TIT Bhopal
-                </p>
-                <p className="text-muted-foreground leading-relaxed text-base px-4">
-                  Handles the logic, routes, and chaos behind the scenes.
-                </p>
-              </div>
-            </CardHeader>
-            <CardContent className="text-center pb-8">
-              <div className="flex justify-center gap-4 pt-6">
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="flex items-center gap-3 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-all duration-300 hover:scale-105 px-6 py-3 rounded-xl shadow-md hover:shadow-lg"
-                >
-                  <a
-                    href="https://www.linkedin.com/in/naman-shrivastava1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                    LinkedIn
-                  </a>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="flex items-center gap-3 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-700 transition-all duration-300 hover:scale-105 px-6 py-3 rounded-xl shadow-md hover:shadow-lg"
-                >
-                  <a
-                    href="https://www.github.com/NamanShrivastava1"
+                    href="https://github.com/dhakar12"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -217,8 +157,8 @@ export default function About() {
               Our Mission
             </h3>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              We believe technology should make life easier, not more
-              complicated. That's why we built MenuQR—to help small businesses
+              I believe technology should make life easier, not more
+              complicated. That's why I built ScanDine—to help small businesses
               thrive in the digital age without losing their personal touch.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
@@ -249,7 +189,7 @@ export default function About() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Built by developers who care about small businesses.
+                    Built by a developer who cares about small businesses.
                   </CardDescription>
                 </CardContent>
               </Card>

@@ -238,7 +238,7 @@ export default function Contact() {
                       href="mailto:contact@menumate.in"
                       className="text-primary hover:text-primary/80 transition-colors"
                     >
-                      scandine.inquiry@gmail.com
+                      udaydhakad1222004@gmail.com
                     </a>
                   </div>
                 </div>
@@ -253,7 +253,7 @@ export default function Contact() {
                       href="tel:+91XXXXXXXXXX"
                       className="text-fresh-600 hover:text-fresh-700 transition-colors"
                     >
-                      +91-6262685831 / 8839040536
+                      +91-8103213383
                     </a>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="font-medium text-foreground">Location</p>
-                    <p className="text-muted-foreground">Bhopal, India</p>
+                    <p className="text-muted-foreground">Surat, India</p>
                   </div>
                 </div>
               </CardContent>
